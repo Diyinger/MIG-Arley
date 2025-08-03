@@ -1,0 +1,51 @@
+
+body {
+    background-color: #e2a140;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Contenedor principal */
+.container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Título principal */
+h2 {
+    color: #4b2105;
+    margin-bottom: 25px;
+}
+
+/* Etiquetas */
+label {
+    font-weight: 500;
+    color: #34495e;
+}
+
+/* Inputs de cantidad */
+input.cantidad-input {
+    max-width: 120px;
+}
+
+
+/* Checkboxes */
+.form-check {
+    padding: 10px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+
+/* Botón */
+.btn-success {
+    background-color: #f7ce92;
+    border-color: #6e4b34;
+    font-weight: bold;
+    padding: 10px 25px;
+    border-radius: 10px;
+}
+
+.btn-success:hover {
+    background-color: #f7ce92;
+}

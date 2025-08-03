@@ -1,0 +1,289 @@
+:root {
+  --blanco: #ffffff;
+  --oscuro: #4b2105; /* marrón oscuro del h1 */
+  --primario: #e2a140; /* anaranjado degradado del fondo */
+  --secundario: #6e4b34; /* marrón suave del shadow */
+  --gris: #a8a8a8;
+  --grisClaro: #f5f1ed;
+  --rojoCafé: #891c1c;
+}
+
+/* General */
+body {
+  font-family: "lora", sans-serif;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+}
+
+/* Navbar */
+.navbar.bg-body-tertiary {
+  background-color: #4b2c0a !important;
+  z-index: 99;
+  position: fixed;
+  width: 100%;
+
+}
+
+.navbar-brand strong {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.nav-link {
+  color: #ffffff !important;
+  border-radius: 12px;
+  padding: 6px 12px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  background-color: #e2a140;
+  color: #4b2105 !important;
+}
+/* .navbar.bg-body-tertiary {
+  background-color: #e2a140 !important;
+}
+
+.navbar-brand strong {
+  color: #4b2105;
+  font-weight: bold;
+}
+
+.nav-link {
+  color: #891c1c;
+  transition: color 0.3s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #dce3c5;
+} */
+
+/* Carousel */
+.carousel-caption h5 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+}
+
+.carousel-caption p {
+  font-size: 1.2rem;
+  color: #dee2e6;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+}
+
+/* Sección de Servicios */
+.card {
+  border: none;
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+  color: #891c1c;
+  font-weight: bold;
+}
+
+.card-text {
+  color: #555;
+}
+
+/* Accordion */
+.accordion-button {
+  background-color: #e9ecef;
+  font-weight: bold;
+}
+
+/* preguntas frecuentes */
+
+.accordion-button:not(.collapsed) {
+  color: #4b2105;
+  background-color: white;
+}
+
+.accordion-body {
+  color: black;
+}
+
+/* Formulario de contacto */
+form .form-control {
+  border-radius: 0.375rem;
+}
+
+/* boton de busqueda */
+form .btn {
+  background-color: #891c1c;
+  color: white;
+  border: none;
+}
+
+.boton-iniciar {
+  background-color: #891c1c;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 5px;
+  margin-left: 10px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.boton-iniciar:hover {
+  background-color: #c27676;
+}
+
+form .btn:hover {
+  background-color: #c27676;
+}
+
+/* Footer preguntas frecuentes */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #4b2105;
+  color: white;
+  margin-top: 4rem;
+}
+
+.accordion-item,
+form .form-control {
+  border: 2px solid #e2a140; /* rojo */
+  border-radius: 0.5rem;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.accordion-item:hover,
+form:hover,
+form .form-control:focus {
+  box-shadow: 0 0 10px #e2a140(220, 53, 69, 0.4); /* sombra roja */
+  border-color: #e2a140; /* rojo más oscuro al pasar el mouse o enfocar */
+  outline: none;
+}
+
+.faq-title {
+  color: black; 
+  text-align: center;
+}
+
+.borde-primario {
+  border: 2px solid #e2a140; /* rojo Bootstrap */
+  border-radius: 0.75rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.borde-primario:hover {
+  box-shadow: 0 0 15px rgba(220, 53, 69, 0.5);
+  transform: scale(1.02);
+}
+
+.servicio-card {
+  border: 2px solid #e2a140; /* rojo Bootstrap */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.servicio-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 20px rgba(220, 53, 69, 0.3);
+}
+
+.testimonios-caja {
+  background-color: #f5f1ed; /* Gris claro */
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.btn-primary {
+  background-color: #e2a140;
+  border: 2px solid #e2a140;
+  color: #4b2105;
+  padding: 6px 12px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: fit-content;
+  text-decoration: none;
+  display: inline-block;
+}
+.testimonios-caja p,
+.testimonios-caja cite {
+  text-align: center;
+}
+.testimonios-caja cite {
+  display: block;
+  text-align: center;
+  font-style: italic;
+  margin-top: 5px;
+}
+.equipo-card {
+  background-color: var(--grisClaro);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 2rem;
+}
+
+.equipo-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.equipo-card img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  border: 3px solid var(--primario);
+}
+
+.equipo-card h3 {
+  font-size: 1.25rem;
+  color: var(--oscuro);
+  margin-bottom: 0.5rem;
+}
+
+.equipo-card p {
+  color: #555;
+  margin: 0;
+}
+.equipo-container {
+  display: flex;
+  justify-content: center; /* centra horizontalmente */
+  gap: 2rem; /* espacio entre tarjetas */
+  flex-wrap: wrap; /* para que bajen si la pantalla es pequeña */
+  margin-top: 2rem;
+}
+
+.equipo-card {
+  background-color: #fff;
+  border: 2px solid #e2a140; /* borde anaranjado */
+  border-radius: 1rem;
+  padding: 1rem;
+  width: 200px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.equipo-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.equipo-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 0.5rem;
+}

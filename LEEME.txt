@@ -1,0 +1,10 @@
+Proyecto-mig/  
+│── assets/        # Imágenes, íconos, fuentes  
+│── config/        # Conexión a la base de datos  
+│── css/           # Archivos CSS  
+│── includes/      # Header, footer, funciones comunes  
+│── php/           # Lógica del backend (procesos, autenticación)  
+│── views/         # Archivos HTML/PHP de las vistas  
+│── tareas.txt     # Lista de tareas del proyecto  
+│── README.md      # Descripción del proyecto  
+│── index.php      # Página principal  

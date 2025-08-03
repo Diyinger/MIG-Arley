@@ -1,0 +1,372 @@
+/* --- Colores base --- */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.custom-header {
+    background-color: #4b2105; /* o el color que prefieras */
+    color: white;
+    justify-content: start; /* Alinea a la izquierda */
+}
+
+/* --- Encabezados --- */
+.logo-img {
+    width: 40px;      /* o el tamaño que prefieras */
+    height: 40px;
+    object-fit: contain;
+}
+
+.custom-header {
+    background-color: #4b2105;
+    color: white;
+    width: 100%;
+}
+
+.custom-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+}
+/* ---------------------------*/
+
+
+h1, h3 {
+    color: #4b2105;
+}
+
+h2{
+    color: #4b2105;
+    margin-bottom: 25px;
+}
+
+/* --- Formularios --- */
+form {
+    background: #fff; ;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    margin-bottom: 30px;
+}
+
+/* --- Etiquetas de formulario --- */
+label {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+/* --- Input y selects --- */
+input[type="text"],
+input[type="number"],
+select {
+    border-radius: 10px;
+}
+
+/* --- Botones --- */
+/* Botón Guardar (verde) */
+.btn-success {
+    background-color: #06a973;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    padding: 8px 16px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+
+/* Botón Cancelar (gris claro) */
+.btn-outline-secondary {
+    background-color: #5e2129;
+    border: 2px solid #5e2129;
+    color: #5e2129;
+    border-radius: 10px;
+    padding: 8px 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #6c757d;
+    color: white;
+}
+
+/* Botón Ver Pedidos (azul claro) */
+.btn-ver {
+    background-color: #5e2129;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    padding: 8px 16px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.btn-ver:hover {
+    background-color: #138496;
+}
+
+/* Botón Editar (amarillo) */
+.btn-warning {
+    background-color: #e2a140;
+    border: none;
+    color: #fff;
+    border-radius: 10px;
+    padding: 8px 16px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.btn-warning:hover {
+    background-color: #8b6c0e;
+}
+
+/* Botón Eliminar (rojo) */
+.btn-danger {
+    background-color: #972c3a;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    padding: 8px 16px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* Botón Ver Ticket (azul oscuro) */
+.btn-primary {
+    background-color: #138496;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    padding: 8px 16px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.btn-ticket:hover {
+    background-color: #0056b3;
+}
+
+
+/* --- Tabla del ticket --- */
+.table th,
+.table td {
+    vertical-align: middle !important;
+}
+
+
+
+
+
+
+.btn-ver {
+    background-color: #5e2129;
+    color: white;
+    padding: 10px 16px;
+    text-decoration: none;
+    border: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-ver:hover {
+    background-color: #218838;
+}
+
+.btn-outline-secondary {
+    background-color: transparent;
+    color: #6c757d;
+    border: 2px solid #6c757d;
+    padding: 10px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    color: #212529;
+    padding: 10px 16px;
+    text-decoration: none;
+    border: none;
+    border-radius: 6px;
+    transition: backgrou
+}
+
+
+
+/* --- Contenedor principal del ticket --- */
+.ticket-container {
+    background-color: #e2a140;
+    border-radius: 12px;
+    padding: 30px;
+    max-width: 800px;
+    margin: 40px auto;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Encabezado del ticket --- */
+.ticket-container h2 {
+    color: #4b2105;
+    margin-bottom: 20px;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* --- Info del cliente --- */
+.ticket-container p {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+/* --- Tabla del ticket --- */
+.ticket-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.ticket-container .table thead th {
+    background-color: #4b2105;
+    color: white;
+    text-align: center;
+}
+
+.ticket-container .table td,
+.ticket-container .table th {
+    vertical-align: middle;
+    text-align: center;
+}
+
+/* --- Total del pedido --- */
+.ticket-container tfoot th {
+    background-color: #f1f1f1;
+    color: #4b2105;
+    font-size: 1.1rem;
+}
+
+/* --- Estilo para el total final --- */
+.ticket-container tfoot .text-success {
+    font-size: 1.2rem;
+    color: #000 !important;
+}
+
+
+
+.table tfoot {
+    background-color: #f1f1f1;
+    font-weight: bold;
+}
+
+/* --- Footer --- */
+footer {
+    background-color: #343a40;
+    color: #fff;
+}
+
+/* --- Estilo para cajas de platos --- */
+#platos-container {
+    border: 1px solid #dee2e6;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+/* --- Estilo para las filas de plato --- */
+#platos-container .row {
+    margin-bottom: 10px;
+}
+
+.pedidos-contenedor {
+    background-color: #e2a140;
+    padding: 30px;
+    margin-top: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Estilo base para la tabla */
+#tabla-movimientos {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Encabezado de la tabla */
+#tabla-movimientos thead {
+    background-color: #f8c471; /* Amarillo pastel */
+    color: #333;
+}
+
+#tabla-movimientos thead th {
+    padding: 12px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 15px;
+    border-bottom: 2px solid #e1e1e1;
+}
+
+/* Cuerpo de la tabla */
+#tabla-movimientos tbody td {
+    padding: 10px 12px;
+    text-align: center;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 14px;
+}
+
+/* Hover de filas */
+#tabla-movimientos tbody tr:hover {
+    background-color: #fdf2e9;
+    transition: background-color 0.3s ease;
+}
+
+/* Alternancia de colores por fila (opcional) */
+#tabla-movimientos tbody tr:nth-child(even) {
+    background-color: #fcfcfc;
+}
+
+/* Responsive wrapper para contenedor */
+.table-responsive {
+    overflow-x: auto;
+    margin-top: 20px;
+}
+
+footer {
+    background: linear-gradient(to right, #4b2c0a, #6e3c1c);
+    color: #ffffff;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+    /* border-top: 3px solid #d39e3b; */
+    margin-top: auto;
+    z-index: 10;
+}
+
+footer a {
+    color: #ffc107;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}

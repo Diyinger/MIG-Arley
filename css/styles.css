@@ -1,0 +1,77 @@
+body {
+    font-family: 'Lora', serif;
+    background: 
+        linear-gradient(rgba(226, 161, 64, 0.8), rgba(226, 161, 64, 0.8)), /* Degradado */
+        url("../assets/logo.png") no-repeat center; 
+    background-size: 1000px; 
+    background-attachment: fixed; 
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    background:white;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: rgb(110, 75, 52);
+    text-align: center;
+    width: 300px;
+}
+
+h1 {
+    color: rgb(75, 33, 5);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label{
+    text-align: left;
+    font-weight: bold;
+    margin: 10px 0 5px;
+}
+
+input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    background-color: rgb(75, 33, 5);
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: rgb(75, 33, 5);
+}
+
+a {
+    color: rgb(75, 33, 5);
+    text-decoration: none;
+    font-size: 14px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    position: absolute;
+    bottom: 10px;
+    font-size: 12px;
+    color: #360404;
+}

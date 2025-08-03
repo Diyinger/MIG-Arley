@@ -1,0 +1,62 @@
+
+    :root {
+    --blanco: #ffffff;
+    --oscuro: #4b2105; /* marrón oscuro del h1 */
+    --primario: #e2a140; /* anaranjado degradado del fondo */
+    --secundario: #6e4b34; /* marrón suave del shadow */
+    --gris: #a8a8a8;
+    --grisClaro: #f5f1ed;
+    --rojoCafé: #891c1c;
+    --marronOscuro: rgb(80, 48, 27);
+    --marronClaro: rgb(171, 96, 46);
+
+
+    }
+
+    body {
+    background-color: #f1b862;
+    font-family: "lora", sans-serif;
+    }
+
+    .container {
+    max-width: 1200px;
+    }
+
+    h2 {
+    color: #891c1c;
+    font-weight: bold;
+
+    }
+
+    .table th {
+    background-color: #4b2105;
+    color: #fff;
+    }
+
+    .btn-primary {
+    background-color: #e2a140;
+    border-color: #e2a140;
+    }
+
+    .btn-success {
+    background-color: #6e4b34;
+    border-color: #6e4b34;
+    
+    }
+
+    /* .card {
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(245, 13, 13, 0.15);
+    } */
+
+    /* Personaliza sin quitar estilos de Bootstrap */
+.custom-navbar {
+    background-color:#6e4b34;
+}
+
+.custom-navbar .nav-link,
+.custom-navbar .navbar-brand {
+    color: black;
+}
+
+

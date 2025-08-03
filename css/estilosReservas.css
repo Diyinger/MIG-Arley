@@ -1,0 +1,243 @@
+/* ----- VARIABLES DE COLOR ----- */
+:root {
+    --blanco: #ffffff;
+    --crema: #fffaf3;
+    --marronClaro: #e2a140;
+    --marronOscuro: #4b2c0a;
+    --marronIntermedio: #6e4b34;
+    --amarilloClaro: #f0d28c;
+    --amarilloHover: #e9b44c;
+    --rojoCafe: #891c1c;
+}
+
+/* ----- GENERAL ----- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--crema);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: var(--marronOscuro);
+}
+
+h1, h2 {
+    color: var(--marronOscuro);
+    text-align: center;
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+/* ----- CONTENEDOR PRINCIPAL ----- */
+.page-wrapper {
+    padding: 40px 20px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* ----- FORMULARIOS ----- */
+.form-container {
+    background-color: var(--blanco);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+    border: 2px solid var(--marronClaro);
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: 600;
+    color: var(--marronOscuro);
+}
+
+.form-control,
+.form-select,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    background-color: var(--crema);
+    border: 1px solid #d6a567;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 15px;
+    color: var(--marronOscuro);
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* ----- BOTONES ----- */
+.btn-primary {
+    background-color: var(--marronClaro);
+    border: 2px solid var(--marronClaro);
+    color: var(--marronOscuro);
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #cc8a33;
+    color: white;
+}
+
+.btn-secondary {
+    background-color: var(--amarilloClaro);
+    color: var(--marronOscuro);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+.btn-secondary:hover {
+    background-color: var(--amarilloHover);
+}
+
+/* Éxito */
+.btn-success {
+    margin-top: 20px;
+    background-color: var(--amarilloClaro);
+    border-color: var(--marronIntermedio);
+    font-weight: bold;
+    padding: 10px 25px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.btn-success:hover {
+    background-color: #e49e56;
+    transform: scale(1.03);
+}
+
+/* ----- TABLAS ----- */
+table {
+    width: 90%;
+    margin: 0 auto 40px auto;
+    border-collapse: collapse;
+    background-color: #fff8f0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.08);
+}
+
+table th {
+    background-color: #f5e1c9;
+    color: #333;
+    text-align: center;
+    padding: 12px;
+    font-size: 16px;
+}
+
+table td {
+    padding: 12px;
+    text-align: center;
+    font-size: 15px;
+    border-bottom: 1px solid #f0e0d0;
+}
+
+table tr:nth-child(even) {
+    background-color: #fffdf9;
+}
+
+/* ----- BOTÓN VOLVER ----- */
+button a {
+    text-decoration: none;
+    color: var(--marronOscuro);
+    font-weight: 600;
+}
+
+button {
+    display: block;
+    margin: 30px auto;
+    padding: 10px 20px;
+    background-color: var(--amarilloClaro);
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--amarilloHover);
+}
+
+/* ----- FOOTER ----- */
+footer {
+    background: linear-gradient(to right, var(--marronOscuro), #6e3c1c);
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: auto;
+    border-top: 3px solid var(--marronClaro);
+    font-size: 14px;
+}
+
+/* ----- BOTONES GRANDES PERSONALIZADOS ----- */
+.custom-btn-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 30px 40px;
+    justify-content: flex-start;
+}
+
+.custom-btn {
+    display: inline-block;
+    min-width: 220px;
+    padding: 12px 20px;
+    background-color: #6e3c1c;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.custom-btn:hover {
+    background-color: #8e5430;
+    transform: scale(1.03);
+}
+
+/* ----- LINKS DE MENÚ ----- */
+.link-menu {
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--marronOscuro);
+    text-decoration: none;
+    padding: 12px 20px;
+    background-color: var(--amarilloClaro);
+    border-radius: 10px;
+    margin: 30px 0 0 40px;
+    transition: all 0.3s ease;
+}
+
+.link-menu:hover {
+    background-color: var(--marronClaro);
+    color: #fff;
+    text-decoration: none;
+}
+
+
+.encabezado-reservas th {
+    background-color: #4b2c0a !important; /* fondo crema */
+    color: #ffffff;
+    font-weight: bold;
+    text-align: center;
+    font-size: 16px;
+}
