@@ -39,6 +39,7 @@ $movimientos = $modelo->obtenerMovimientos();
     <table id="tabla-existencias" class="display">
         <thead>
             <tr>
+                
                 <th>ID</th>
                 <th>Producto</th>
                 <th>Stock</th>
