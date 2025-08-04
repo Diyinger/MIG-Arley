@@ -121,3 +121,95 @@ h2 {
     all: unset;
     display: inline;
 }
+/* Contenedor principal */
+.layout-contenedor {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Formularios a la izquierda, tablas más anchas a la derecha */
+    gap: 40px;
+    max-width: 1600px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* Formularios */
+.formularios-lateral {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Tablas con tarjetas uniformes */
+.tablas-contenedor {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.tabla-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid #d39e3b;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    min-height: 450px; /* Para que ambas tengan la misma altura */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Ajuste del DataTable dentro */
+.tabla-card table {
+    width: 100% !important;
+}
+
+/* Ajustar títulos */
+.tabla-card h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #4b2c0a;
+}
+
+/* Responsivo */
+@media (max-width: 1024px) {
+    .layout-contenedor {
+        grid-template-columns: 1fr;
+    }
+    .formularios-lateral {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .form-card {
+        max-width: 400px;
+    }
+}
+/* Igualar altura de las dos tablas */
+.tablas-contenedor {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.tabla-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid #d39e3b;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Ajuste de altura mínima y uniforme */
+.tabla-card {
+    min-height: 500px; /* Ajusta la altura que quieras */
+}
+
+/* DataTable ocupa todo el espacio posible */
+.tabla-card table {
+    width: 100% !important;
+    flex-grow: 1;
+}
