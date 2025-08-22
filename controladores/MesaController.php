@@ -1,5 +1,5 @@
 <?php
-require_once 'models/Mesa.php';
+require_once '../../modelos/modelo_reservas/Mesa.php';
 
 class MesaController
 {
@@ -18,7 +18,7 @@ class MesaController
     public function index()
     {
         $mesas = $this->modelo->obtenerTodas();
-        include 'views/mesas.php';
+        include '../../pages/views/mesas.php';
     }
 
     public function agregar()
@@ -47,7 +47,7 @@ class MesaController
         $id = $_GET['id'] ?? null;
         if ($id) {
             $mesa = $this->modelo->obtenerPorId($id);
-            include 'views/editar_mesa.php';
+            include 'editar_mesa.php';
         }
     }
 

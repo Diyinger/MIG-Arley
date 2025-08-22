@@ -4,7 +4,7 @@ if (!isset($_SESSION['admin'])) {
     $_SESSION['admin'] = 'admin';
 }
 include '../pages_layout/head.php';
-require_once '../../Conexion.php';
+require_once '../../config/Conexion.php';
 
 $conn = Conexion::getInstancia()->getConexion();
 $stmtMesas = $conn->query("SELECT * FROM mesas WHERE Estado = 'Disponible'");

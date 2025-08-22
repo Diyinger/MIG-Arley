@@ -1,5 +1,5 @@
 <?php
-require 'config/conexion.php';
+require '../../config/conexion.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $_POST['id'];
@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-<?php include 'views/header.php'; ?>
+<?php include 'header.php'; ?>
 
 <div class="container mt-5">
     <h2 class="mb-4">Editar Reserva</h2>
@@ -59,8 +59,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
 
         <button type="submit" class="btn btn-primary">Actualizar Reserva</button>
-        <a href="index.php?url=reserva/index" class="btn btn-secondary">Cancelar</a>
+        <a href="indexD.php?url=reserva/index" class="btn btn-secondary">Cancelar</a>
     </form>
 </div>
 
-<?php include 'views/footer.php'; ?>
+<?php include 'footer.php'; ?>

@@ -1,4 +1,4 @@
-<?php include 'views/header.php'; ?>
+<?php include 'header.php'; ?>
 
 <div class="container mt-5">
     <h2 class="mb-4">Bienvenido al Panel de Administración</h2>
@@ -76,4 +76,4 @@
 </div>
 <a href="index.php?url=reserva/reporteMensual" class="btn mt-3" style="background-color:rgb(224, 156, 53);">Ver reporte mensual</a>
 
-<?php include 'views/footer.php'; ?>
+<?php include 'footer.php'; ?>

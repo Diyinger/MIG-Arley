@@ -3,12 +3,12 @@ $titulo = "Nuevo Pedido";
 
 
 // Incluye la clase de conexión y obtén el objeto PDO
-require_once __DIR__ . '/../../Conexion.php';
+require_once __DIR__ . '/../../config/Conexion.php';
 include __DIR__ . '/../pages_layout/head.php';
 
 $conn = Conexion::getInstancia()->getConexion();
 ?>
-<link rel="stylesheet" href="../../css/estilosIndexAdmin.css">
+<link rel="stylesheet" href="../../public/css/estilosIndexAdmin.css">
 <h2 class="mb-4">Nuevo Pedido</h2>
 <h4>
 <a href="../pages_administrador/index.php"  class="custom-btn" >Volver al inicio</a>

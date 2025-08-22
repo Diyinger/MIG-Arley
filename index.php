@@ -11,7 +11,7 @@
     integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
 
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./css/index.css">
+  <link rel="stylesheet" href="./public/css/index.css">
 
   <!-- Scroll suave -->
   <style>
@@ -29,7 +29,7 @@
 
       <!-- Logo y nombre del grupo -->
       <a class="navbar-brand d-flex align-items-center" href="#">
-  <img src="assets/logo-negro.png" alt="Logo" width="50" height="50" class="me-2 logo-svg">
+  <img src="assets/img/logo-negro.png" alt="Logo" width="50" height="50" class="me-2 logo-svg">
   <strong>Grupo MIG</strong>
 </a>
 
@@ -64,7 +64,7 @@
 
         <!-- Botón separado -->
         <a class="nav-link" href="pages/pages_login/login.php">Iniciar como administrador</a>
-        <a class="nav-link" href="MIG-dayana/index.php">Iniciar como usuario</a>
+        <a class="nav-link" href="pages/views/indexD.php">Iniciar como usuario</a>
 
       </div>
 
@@ -254,22 +254,22 @@
   <h2 class="faq-title">Nuestro Equipo</h2>
   <div class="equipo-container">
     <div class="equipo-card">
-      <img src="assets/perfiles2.jpg" alt="Arley Culma">
+      <img src="assets/img/perfiles2.jpg" alt="Arley Culma">
       <h3>Arley Culma</h3>
       <p>Desarrollador</p>
     </div>
     <div class="equipo-card">
-      <img src="assets/dayis.jpeg" alt="Dayana Lopez">
+      <img src="assets/img/dayis.jpeg" alt="Dayana Lopez">
       <h3>Dayana Lopez</h3>
       <p>Desarrollador</p>
     </div>
     <div class="equipo-card">
-      <img src="assets/perfiles2.jpg" alt="Diego Gutierrez">
+      <img src="assets/img/perfiles2.jpg" alt="Diego Gutierrez">
       <h3>Diego Gutierrez</h3>
       <p>Desarrollador</p>
     </div>
     <div class="equipo-card">
-      <img src="assets/lina.jpeg" alt="Lina Bohorquez">
+      <img src="assets/img/lina.jpeg" alt="Lina Bohorquez">
       <h3>Lina Bohorquez</h3>
       <p>Desarrollador</p>
     </div>

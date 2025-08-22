@@ -20,8 +20,8 @@
     <?php if (isset($_SESSION['admin'])): ?>
         <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
             <div class="container-fluid">
-                <a class="navbar-brand d-flex align-items-center" href="index.php">
-                    <img src="assets/img/logo.png" alt="Logo" width="40" height="40" class="me-2">
+                <a class="navbar-brand d-flex align-items-center" href="/Mig/pages/views/index.php">
+                    <img src="/Mig/assets/img/logo.png" alt="Logo" width="40" height="40" class="me-2">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
@@ -29,17 +29,17 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex align-items-center">
                         <li class="nav-item me-2">
-                            <a class="btn btn"style="background-color: #e2a140;" href="index.php?url=mesa/index">Mesas</a>
+                            <a class="btn btn" style="background-color: #e2a140;" href="/Mig/pages/views/indexD.php?url=mesa/index">Mesas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn" style="background-color: #e2a140;" href="index.php?url=reserva/index">Reservas</a>
+                            <a class="btn btn" style="background-color: #e2a140;" href="/Mig/pages/views/index.php?url=reserva/index">Reservas</a>
                         </li>
                     </ul>
 
 
                     <?php if (isset($_SESSION['admin'])): ?>
-                        <a href="index.php?url=dashboard" class="btn btn me-2" style="background-color: #e2a140;">Inicio</a>
-                        <a href="index.php?url=auth/logout" class="btn btn-" style="background-color:rgb(152, 38, 18);">Cerrar sesión</a>
+                        <a href="/Mig/pages/views/indexD.php?url=dashboard" class="btn btn me-2" style="background-color: #e2a140;">Inicio</a>
+                        <a href="/Mig/pages/views/indexD.php?url=auth/logout" class="btn btn-" style="background-color:rgb(152, 38, 18);">Cerrar sesión</a>
                     <?php endif; ?>
                 </div>
             </div>

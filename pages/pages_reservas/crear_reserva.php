@@ -1,6 +1,6 @@
 <?php include 'header.php'; 
 include 'header.php';
-require_once '../../Conexion.php';
+require_once '../../config/Conexion.php';
 
 $conn = Conexion::getInstancia()->getConexion();
 

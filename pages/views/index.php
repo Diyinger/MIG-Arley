@@ -1,11 +1,18 @@
-<?php include 'views/header.php'; ?>
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+if (!isset($_SESSION['admin'])) {
+    $_SESSION['admin'] = true;
+}
+include 'header.php'; ?>
 
 <div class="container mt-5">
     <h2 class="mb-4">Listado de Reservas</h2>
 
-    <a href="index.php?url=reserva/crear" class="btn btn-success mb-3">Nueva Reserva</a>
+    <a href="indexD.php?url=reserva/crear" class="btn btn-success mb-3">Nueva Reserva</a>
 
-    <form method="GET" action="index.php" class="mb-3">
+    <form method="GET" action="indexD.php" class="mb-3">
         <input type="hidden" name="url" value="reserva/index">
         <div class="input-group">
             <input type="text" name="busqueda" class="form-control" placeholder="Buscar por nombre..." value="<?= htmlspecialchars($_GET['busqueda'] ?? '') ?>">
@@ -38,8 +45,8 @@
                             <td><?= $reserva['personas'] ?></td>
                             <td>Mesa<?= htmlspecialchars($reserva['numero_mesa']) ?></td>
                             <td>
-                                <a href="index.php?url=reserva/editar&id=<?= $reserva['id'] ?>" class="btn btn-warning btn-sm">Editar</a>
-                                <a href="index.php?url=reserva/eliminar&id=<?= $reserva['id'] ?>"
+                                <a href="indexD.php?url=reserva/editar&id=<?= $reserva['id'] ?>" class="btn btn-warning btn-sm">Editar</a>
+                                <a href="indexD.php?url=reserva/eliminar&id=<?= $reserva['id'] ?>"
                                     class="btn btn-danger btn-sm"
                                     onclick="return confirm('¿Estás seguro de que deseas eliminar esta reserva?');">
                                     Eliminar
@@ -56,4 +63,4 @@
     <?php endif; ?>
 </div>
 
-<?php include 'views/footer.php'; ?>
+<?php include 'footer.php'; ?>

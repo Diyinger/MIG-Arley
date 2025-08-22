@@ -3,7 +3,7 @@ class Auth {
     private $db;
 
     public function __construct() {
-        $this->db = new PDO("mysql:host=localhost;dbname=reservas_admin", "root", "");
+        $this->db = new PDO("mysql:host=localhost;dbname=db_mig_unificada", "root", "");
     }
 
     public function verificarCredenciales($usuario) {

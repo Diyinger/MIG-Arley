@@ -1,4 +1,4 @@
-<?php include 'views/header.php'; ?>
+<?php include 'header.php'; ?>
 
 <div class="container mt-5 d-flex justify-content-center">
     <div class="card p-4 shadow" style="max-width: 600px; width: 100%;">
@@ -71,4 +71,4 @@ document.getElementById('formReserva').addEventListener('submit', function(e) {
 });
 </script>
 
-<?php include 'views/footer.php'; ?>
+<?php include 'footer.php'; ?>

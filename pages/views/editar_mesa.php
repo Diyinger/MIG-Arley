@@ -1,9 +1,9 @@
-<?php include 'views/header.php'; ?>
+<?php include 'header.php'; ?>
 
 <div class="container mt-4">
     <h2>Editar Mesa</h2>
 
-    <form action="index.php?url=mesa/actualizar" method="POST">
+    <form action="indexD.php?url=mesa/actualizar" method="POST">
         <input type="hidden" name="mesa_id" value="<?= $mesa['MesaID'] ?>">
 
         <div class="mb-3">
@@ -17,8 +17,8 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Actualizar</button>
-        <a href="index.php?url=mesa/index" class="btn btn-secondary">Cancelar</a>
+        <a href="indexD.php?url=mesa/index" class="btn btn-secondary">Cancelar</a>
     </form>
 </div>
 
-<?php include 'views/footer.php'; ?>
+<?php include 'footer.php'; ?>

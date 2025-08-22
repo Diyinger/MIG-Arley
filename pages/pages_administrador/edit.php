@@ -12,7 +12,7 @@ $Admin = $Modelo->getById($Id);
 <head>
     <meta charset="UTF-8">
     <title>Editar Administrador</title>
-    <link rel="stylesheet" href="../../css/add_delet_edit_admin.css">
+    <link rel="stylesheet" href="../../public/css/add_delet_edit_admin.css">
 
 </head>
 <body>

@@ -1,5 +1,7 @@
 <?php
-session_start();
+
+    session_start();
+
 date_default_timezone_set('America/Bogota'); 
 
 
@@ -13,113 +15,113 @@ $url = $_GET['url'] ?? 'login';
 
 switch ($url) {
     case 'login':
-        include 'views/login.php';
+        include 'login.php';
         break;
 
     case 'auth/login':
-        require_once 'controllers/AuthController.php';
+        require_once '../../controladores/AuthController.php';
         $auth = new AuthController();
         $auth->login();
         break;
 
     case 'auth/recuperar':
-        require_once 'controllers/AuthController.php';
+        require_once '../../controladores/AuthController.php';
         $auth = new AuthController();
         $auth->recuperar();
         break;
 
 
     case 'auth/logout':
-        require_once 'controllers/AuthController.php';
+        require_once '../../controladores/AuthController.php';
         $auth = new AuthController();
         $auth->logout();
         break;
 
     case 'registro':
-        include 'views/registro.php';
+        include 'registro.php';
         break;
 
     case 'auth/registro':
-        require_once 'controllers/AuthController.php';
+        require_once '../../controladores/AuthController.php';
         $auth = new AuthController();
         $auth->registro();
         break;
 
     case 'reserva/index':
-        require_once 'controllers/ReservaController.php';
+        require_once '../../controladores/ReservaController.php';
         $reserva = new ReservaController();
         $reserva->index();
         break;
 
     case 'mesa/index':
-        require_once 'controllers/MesaController.php';
+        require_once '../../controladores/MesaController.php';
         $mesa = new MesaController();
         $mesa->index();
         break;
 
     case 'mesa/agregar':
-        require_once 'controllers/MesaController.php';
+        require_once '../../controladores/MesaController.php';
         $mesa = new MesaController();
         $mesa->agregar();
         break;
 
     case 'mesa/guardar':
-        require_once 'controllers/MesaController.php';
+        require_once '../../controladores/MesaController.php';
         $mesa = new MesaController();
         $mesa->guardar();
         break;
 
     case 'mesa/editar':
-        require_once 'controllers/MesaController.php';
+        require_once '../../controladores/MesaController.php';
         $mesa = new MesaController();
         $mesa->editar();
         break;
 
     case 'mesa/actualizar':
-        require_once 'controllers/MesaController.php';
+        require_once '../../controladores/MesaController.php';
         $mesa = new MesaController();
         $mesa->actualizar();
         break;
 
     case 'mesa/eliminar':
-        require_once 'controllers/MesaController.php';
+        require_once '../../controladores/MesaController.php';
         $mesa = new MesaController();
         $mesa->eliminar();
         break;
 
 
     case 'reserva/crear':
-        require_once 'controllers/ReservaController.php';
+        require_once '../../controladores/ReservaController.php';
         $reserva = new ReservaController();
         $reserva->crear();
         break;
 
     case 'reserva/guardar':
-        require_once 'controllers/ReservaController.php';
+        require_once '../../controladores/ReservaController.php';
         $reserva = new ReservaController();
         $reserva->guardar();
         break;
 
     case 'reserva/eliminar':
-        require_once 'controllers/ReservaController.php';
+        require_once '../../controladores/ReservaController.php';
         $reserva = new ReservaController();
         $reserva->eliminar();
         break;
 
     case 'reserva/editar':
-        require_once 'controllers/ReservaController.php';
+        require_once '../../controladores/ReservaController.php';
         $reserva = new ReservaController();
         $reserva->editar();
         break;
 
     case 'reserva/actualizar':
-        require_once 'controllers/ReservaController.php';
+        require_once '../../controladores/ReservaController.php';
         $reserva = new ReservaController();
         $reserva->actualizar();
         break;
 
     case 'olvidar':
-        include 'views/olvidar.php';
+        include 'olvidar.php';
         break;
 
     default:
@@ -127,8 +129,8 @@ switch ($url) {
         break;
 
     case 'dashboard':
-    require_once 'models/Reserva.php';
-    require_once 'models/Mesa.php';
+    require_once '../../modelos/modelo_reservas/Reserva.php';
+    require_once '../../modelos/modelo_reservas/Mesa.php';
 
     $reserva = new Reserva();
     $mesa = new Mesa();
@@ -140,11 +142,11 @@ switch ($url) {
     $mesasDisponibles = $estadoMesas['Disponible'] ?? 0;
     $totalMesas = array_sum($estadoMesas);
 
-    include 'views/dashboard.php';
+    include 'dashboard.php';
     break;
 
     case 'reserva/reporteMensual':
-    require_once 'controllers/ReservaController.php';
+    require_once '../../controladores/ReservaController.php';
     $reserva = new ReservaController();
     $reserva->reporteMensual();
     break;

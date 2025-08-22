@@ -20,7 +20,7 @@ header("Expires: Thu, 01 Jan 1970 00:00:00 GMT");
 <head>
     <meta charset="UTF-8">
     <title>Iniciar Sesión MIG</title>
-    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../public/css/styles.css">
     <!-- Meta tags para prevenir caché -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">

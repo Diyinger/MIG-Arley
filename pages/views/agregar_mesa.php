@@ -1,9 +1,9 @@
-<?php include 'views/header.php'; ?>
+<?php include 'header.php'; ?>
 
 <div class="container mt-4">
     <h2>Agregar nueva mesa</h2>
 
-    <form action="index.php?url=mesa/guardar" method="POST">
+    <form action="indexD.php?url=mesa/guardar" method="POST">
         <div class="mb-3">
             <label for="numero" class="form-label">Número de mesa</label>
             <input type="number" class="form-control" name="numero" required>
@@ -15,8 +15,8 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Guardar mesa</button>
-        <a href="index.php?url=mesa/index" class="btn btn-secondary">Cancelar</a>
+        <a href="indexD.php?url=mesa/index" class="btn btn-secondary">Cancelar</a>
     </form>
 </div>
 
-<?php include 'views/footer.php'; ?>
+<?php include 'footer.php'; ?>

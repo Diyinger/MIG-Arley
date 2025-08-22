@@ -1,4 +1,4 @@
-<?php include 'views/header.php'; ?>
+<?php include 'header.php'; ?>
 
 <div class="container mt-5">
     <div class="row justify-content-center">
@@ -30,4 +30,4 @@
     </div>
 </div>
 
-<?php include 'views/footer.php'; ?>
+<?php include 'footer.php'; ?>

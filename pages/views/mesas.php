@@ -1,4 +1,4 @@
-<?php include 'views/header.php'; ?>
+<?php include 'header.php'; ?>
 
 
 <div class="container mt-4">
@@ -22,8 +22,8 @@
                     <td><?= $mesa['Capacidad'] ?> personas</td>
                     <td><?= $mesa['Estado'] ?></td>
                     <td>
-                        <a href="index.php?url=mesa/editar&id=<?= $mesa['MesaID'] ?>" class="btn btn-sm btn-warning">Editar</a>
-                        <a href="index.php?url=mesa/eliminar&id=<?= $mesa['MesaID'] ?>"
+                        <a href="indexD.php?url=mesa/editar&id=<?= $mesa['MesaID'] ?>" class="btn btn-sm btn-warning">Editar</a>
+                        <a href="indexD.php?url=mesa/eliminar&id=<?= $mesa['MesaID'] ?>"
                             class="btn btn-danger btn-sm"
                             onclick="return confirm('¿Estás seguro de que deseas eliminar esta mesa?');">
                             Eliminar
@@ -36,4 +36,4 @@
     </table>
 </div>
 
-<?php include 'views/footer.php'; ?>
+<?php include 'footer.php'; ?>

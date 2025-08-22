@@ -1,4 +1,4 @@
-<?php include 'views/header.php'; ?>
+<?php include 'header.php'; ?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -102,7 +102,7 @@
         })();
     </script>
 
-<?php include 'views/footer.php'; ?>
+<?php include 'footer.php'; ?>
 </body>
 
 </html>

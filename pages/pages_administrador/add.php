@@ -7,7 +7,7 @@ require_once("../../controladores/controlador_usuario/validar_sesion.php");
 <head>
     <meta charset="UTF-8">
     <title>Registrar Administrador</title>
-    <link rel="stylesheet" href="../../css/add_delet_edit_admin.css">
+    <link rel="stylesheet" href="../../public/css/add_delet_edit_admin.css">
 
 </head>
 <body>

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Favicon -->
-    <link rel="icon" href="/assets/logo-negro.png" type="image/png">
+    <link rel="icon" href="/assets/img/logo-negro.png" type="image/png">
 
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -29,7 +29,7 @@
 <header class="navbar navbar-expand-lg navbar-dark" style="background-color: #4b2c0a;">
     <div class="container-fluid">
         <a class="navbar-brand d-flex align-items-center" href="#">
-            <img src="../../assets/logo-negro.png" alt="Logo" width="50" height="50" class="me-2">
+            <img src="../../assets/img/logo-negro.png" alt="Logo" width="50" height="50" class="me-2">
             <strong style="color: #ffffff;">Grupo MIG</strong>
         </a>
       

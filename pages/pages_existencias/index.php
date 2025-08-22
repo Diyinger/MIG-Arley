@@ -13,8 +13,8 @@ $movimientos = $modelo->obtenerMovimientos();
 <head>
     <meta charset="UTF-8">
     <title>Existencias</title>
-    <link rel="stylesheet" href="../../css/estilosIndexAdmin.css">
-    <link rel="stylesheet" href="../../css/add_delet_edit_admin.css">
+    <link rel="stylesheet" href="../../public/css/estilosIndexAdmin.css">
+    <link rel="stylesheet" href="../../public/css/add_delet_edit_admin.css">
 
     <!-- DataTables CSS -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
