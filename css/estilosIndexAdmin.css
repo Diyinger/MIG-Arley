@@ -1,0 +1,297 @@
+/* ----- GENERAL ----- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+h1, h2 {
+    color: #4b2c0a;
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* ----- CONTENEDOR PRINCIPAL ----- */
+.page-wrapper {
+    padding: 40px 20px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* ----- FORMULARIO ----- */
+.form-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+    border: 2px solid #d39e3b;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: 600;
+    color: #4b2c0a;
+}
+
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #d6a567;
+    background-color: #fffaf3;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.btn-success {
+    margin-top: 20px;
+    background-color: #f7ce92;
+    border-color: #6e4b34;
+    font-weight: bold;
+    padding: 10px 25px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.btn-success:hover {
+    background-color: #e49e56;
+    transform: scale(1.03);
+}
+
+/* ----- TABLAS ----- */
+table {
+    width: 90%;
+    margin: 0 auto 40px auto;
+    border-collapse: collapse;
+    background-color: #fff8f0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Encabezados */
+table th {
+    background-color: #f5e1c9;
+    color: #333;
+    text-align: center;
+    padding: 12px;
+    font-size: 16px;
+}
+
+/* Celdas */
+table td {
+    padding: 12px;
+    text-align: center;
+    font-size: 15px;
+    border-bottom: 1px solid #f0e0d0;
+}
+
+
+/* Filas alternas */
+table tr:nth-child(even) {
+    background-color: #fffdf9;
+}
+
+
+
+
+/* ----- BOTÓN VOLVER ----- */
+button a {
+    text-decoration: none;
+    color: #4b2c0a;
+    font-weight: 600;
+}
+
+button {
+    display: block;
+    margin: 30px auto;
+    padding: 10px 20px;
+    background-color: #f0d28c;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #e9b44c;
+}
+
+/* ----- FOOTER ----- */
+footer {
+    background: linear-gradient(to right, #4b2c0a, #6e3c1c);
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: auto;
+    border-top: 3px solid #d39e3b;
+    font-size: 14px;
+}
+
+
+.link-menu {
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 600;
+    color: #4b2c0a;
+    text-decoration: none;
+    padding: 12px 20px;
+    background-color: #f7ce92;
+    border-radius: 10px;
+    margin: 30px 0 0 40px;
+    transition: all 0.3s ease;
+}
+
+.link-menu:hover {
+    background-color: #e7a84b;
+    color: #fff;
+    text-decoration: none;
+}
+
+.link-menu:hover {
+    background-color: #e7a84b;
+    color: #fff;
+    text-decoration: none;
+}
+
+.custom-btn-container {
+    display: flex;
+    flex-wrap: wrap;         /* Que se acomoden en varias líneas si no caben */
+    gap: 15px;               /* Espacio entre botones */
+    margin: 30px 40px;       /* Márgenes para que no queden pegados */
+    justify-content: flex-start; /* Alinearlos a la izquierda */
+}
+
+.custom-btn {
+    display: inline-block;
+    padding: 8px 16px; /* Menos alto y menos ancho */
+    background-color: #6e3c1c;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    font-size: 14px; /* Letra un poco más pequeña */
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: auto; /* Solo ocupa lo necesario */
+    max-width: 200px; /* Límite si fuera necesario */
+    margin-left: 130px;
+}
+.custom-btn:hover {
+    background-color: #8e5430;
+    transform: scale(1.03);
+}
+
+/* Posicionar la tabla a la derecha y hacerla más pequeña */
+.table-right-small {
+    width: 60%; /* Más pequeña que el 90% original */
+    margin-left: auto; /* Empuja la tabla hacia la derecha */
+    margin-right: 40px; /* Separación del borde derecho */
+}
+/* ---- MENÚ LATERAL (SIDEBAR) ---- */
+.sidebar-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 220px;
+    background: #4b2c0a;
+    padding: 30px 15px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sidebar-menu h2 {
+    font-size: 20px;
+    color: #4b2c0a;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.sidebar-menu a {
+    text-decoration: none;
+    color: #4b2c0a;
+    font-weight: bold;
+    padding: 10px 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: block;
+    text-align: center;
+}
+
+.sidebar-menu a:hover {
+    background-color: #e7a84b;
+    color: #fff;
+    transform: scale(1.03);
+}
+.contenido-ajustado {
+    margin-left: 250px; /* o el ancho exacto de tu menú lateral */
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+}
+/* Centrar tabla y separarla del título */
+.table-centered {
+    width: 80%;
+    margin: 40px auto; /* Centra y da espacio hacia arriba/abajo */
+}
+.table-centered {
+    width: 80%;
+    margin: 40px auto;
+}
+.admin-table {
+    width: 60%;
+    margin: 20px auto;
+}
+.btn-registrarAdministrador {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px; 
+    margin: 30px 0;
+}
+
+
+.btn-registro {
+    background-color: #4b2c0a; 
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-registro:hover {
+    background-color: #A0522D;
+    transform: scale(1.05);
+}
+
+#tituloAdmin {
+    text-align: center;
+    margin-top: 30px;
+}
+
+#tituloAdmin h1 {
+    color: #4b2c0a;
+    font-size: 24px;
+    font-weight: bold;
+}

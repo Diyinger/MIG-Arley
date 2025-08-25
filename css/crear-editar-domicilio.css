@@ -1,0 +1,54 @@
+/* Fondo general */
+body {
+    background-color: #fffaf3; /* un beige suave */
+}
+
+/* Contenedor principal */
+.contenido-principal {
+    margin-left: 230px; /* mueve todo a la derecha (separación del menú) */
+    margin-right: 230px; /* margen derecho */
+    padding: 10px;
+}
+
+/* Estilo de la tarjeta */
+.card {
+    background-color: #fff5e6; /* un naranja muy claro */
+    border: 1px solid #e0a96d;
+    border-radius: 12px;
+}
+
+/* Título */
+.card h2 {
+    color: #a0522d;
+    font-weight: bold;
+}
+
+/* Botón Guardar (verde de Bootstrap + un poco más oscuro al pasar el mouse) */
+.btn-success {
+    background-color: #28a745;
+    border: none;
+}
+.btn-success:hover {
+    background-color: #218838;
+}
+
+/* Botón Cancelar (tono café/naranja) */
+.btn-brown {
+    background-color: #d99152;
+    border: none;
+    color: white;
+}
+.btn-brown:hover {
+    background-color: #b86e2c;
+    color: white;
+}
+
+footer {
+    background: linear-gradient(to right, #4b2c0a, #6e3c1c);
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: auto;
+    border-top: 3px solid #d39e3b;
+    font-size: 14px;
+}
