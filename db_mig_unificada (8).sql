@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-08-2025 a las 04:46:09
+-- Tiempo de generación: 26-08-2025 a las 05:48:46
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -319,18 +319,21 @@ CREATE TABLE `tb_administradores` (
   `USUARIO` varchar(100) DEFAULT NULL,
   `PASSWORD` varchar(255) DEFAULT NULL,
   `PERFIL` varchar(50) DEFAULT 'Administrador',
-  `ESTADO` varchar(50) DEFAULT 'Activo'
+  `ESTADO` varchar(50) DEFAULT 'Activo',
+  `ROL` enum('Administrador','Mesero') NOT NULL DEFAULT 'Administrador'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `tb_administradores`
 --
 
-INSERT INTO `tb_administradores` (`ID_USUARIO`, `NOMBRE`, `APELLIDO`, `USUARIO`, `PASSWORD`, `PERFIL`, `ESTADO`) VALUES
-(12, 'nadie', 'nadieeee', 'Admin don nadie', '$2y$10$DUD4Wbx3Pj1rlCrBcec5IeqIoj/BR8BhDRSnABjR8FZf5.lI8jYCu', 'Administrador', 'Activo'),
-(13, 'lina', 'maria', 'Admin lina', '$2y$10$5QtPDz4FQdEXnGnjP7BuzOguEtSnRyAzmQ4F/bsMIQ8.1/TpYln66', 'Administrador', 'Activo'),
-(14, 'dayis', 'dayis', 'Admin dayis', '$2y$10$xyi7x1GuJUWqVUYedXGe8usBEktrtV7/Jm0Fc8Oox7nX0Vo8v9z/i', 'Administrador', 'Activo'),
-(15, 'diego', 'juandigu', 'Admin diego', '$2y$10$QZQvy7f4tS9Zd/oNQ3sRheFdrsnIQKCK.45voyGwgSLwm2Q4V63w6', 'Administrador', 'Activo');
+INSERT INTO `tb_administradores` (`ID_USUARIO`, `NOMBRE`, `APELLIDO`, `USUARIO`, `PASSWORD`, `PERFIL`, `ESTADO`, `ROL`) VALUES
+(12, 'nadie', 'nadieeee', 'Admin don nadie', '$2y$10$DUD4Wbx3Pj1rlCrBcec5IeqIoj/BR8BhDRSnABjR8FZf5.lI8jYCu', 'Administrador', 'Activo', 'Administrador'),
+(13, 'lina', 'maria', 'Admin lina', '$2y$10$5QtPDz4FQdEXnGnjP7BuzOguEtSnRyAzmQ4F/bsMIQ8.1/TpYln66', 'Administrador', 'Activo', 'Administrador'),
+(14, 'dayis', 'dayis', 'Admin dayis', '$2y$10$xyi7x1GuJUWqVUYedXGe8usBEktrtV7/Jm0Fc8Oox7nX0Vo8v9z/i', 'Administrador', 'Activo', 'Administrador'),
+(15, 'diego', 'juandigu', 'Admin diego', '$2y$10$QZQvy7f4tS9Zd/oNQ3sRheFdrsnIQKCK.45voyGwgSLwm2Q4V63w6', 'Administrador', 'Activo', 'Administrador'),
+(19, 'mesero1', '', 'mesero1', '$2y$10$Og4uP5zu0797f14xl0GSbexjyCPH0c1nnkZxOkGy153gpSZs/dJvS', 'Mesero', 'Activo', 'Mesero'),
+(20, 'mesero1', '', 'mesero1', '$2y$10$Og4uP5zu0797f14xl0GSbexjyCPH0c1nnkZxOkGy153gpSZs/dJvS', 'Mesero', 'Activo', 'Mesero');
 
 -- --------------------------------------------------------
 
@@ -343,26 +346,6 @@ CREATE TABLE `tb_inventario` (
   `nombre_producto` varchar(100) NOT NULL,
   `existencias` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `usuarios`
---
-
-CREATE TABLE `usuarios` (
-  `id` int(11) NOT NULL,
-  `usuario` varchar(50) NOT NULL,
-  `clave` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `usuarios`
---
-
-INSERT INTO `usuarios` (`id`, `usuario`, `clave`) VALUES
-(23, 'cliente23', 'clave_encriptada'),
-(24, 'mesero1', '$2y$10$Og4uP5zu0797f14xl0GSbexjyCPH0c1nnkZxOkGy153gpSZs/dJvS');
 
 -- --------------------------------------------------------
 
@@ -524,12 +507,6 @@ ALTER TABLE `tb_inventario`
   ADD PRIMARY KEY (`id_producto`);
 
 --
--- Indices de la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`id`);
-
---
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -585,19 +562,13 @@ ALTER TABLE `recuperacioncontraseña`
 -- AUTO_INCREMENT de la tabla `reservas`
 --
 ALTER TABLE `reservas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `tb_administradores`
 --
 ALTER TABLE `tb_administradores`
-  MODIFY `ID_USUARIO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
-
---
--- AUTO_INCREMENT de la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `ID_USUARIO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Restricciones para tablas volcadas
@@ -613,7 +584,7 @@ ALTER TABLE `inventario_movimientos`
 -- Filtros para la tabla `notificaciones`
 --
 ALTER TABLE `notificaciones`
-  ADD CONSTRAINT `fk_notificaciones_usuario` FOREIGN KEY (`UsuarioID`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_notificaciones_usuario` FOREIGN KEY (`UsuarioID`) REFERENCES `tb_administradores` (`ID_USUARIO`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `pedidos`
@@ -639,7 +610,7 @@ ALTER TABLE `platos_productos`
 -- Filtros para la tabla `recuperacioncontraseña`
 --
 ALTER TABLE `recuperacioncontraseña`
-  ADD CONSTRAINT `fk_recuperacion_usuario` FOREIGN KEY (`UsuarioID`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_recuperacion_usuario` FOREIGN KEY (`UsuarioID`) REFERENCES `tb_administradores` (`ID_USUARIO`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `reservas`

@@ -43,10 +43,11 @@ class Administradores {
     // }
     // return false; ESTA ES LA VERSION ANTERIOR
 
-    public function add($nombre, $apellido, $usuario, $password) {
-        $sql = "INSERT INTO tb_administradores (NOMBRE, APELLIDO, USUARIO, PASSWORD) VALUES (?, ?, ?, ?)";
+    public function add($nombre, $apellido, $usuario, $password, $rol) {
+        $sql = "INSERT INTO tb_administradores (NOMBRE, APELLIDO, USUARIO, PASSWORD, ROL, PERFIL) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($sql);
-        return $stmt->execute([$nombre, $apellido, $usuario, $password]);
+        $perfil = $rol; // El perfil será igual al rol
+        return $stmt->execute([$nombre, $apellido, $usuario, $password, $rol, $perfil]);
     }
 
     public function get() {

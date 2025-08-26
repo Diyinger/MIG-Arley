@@ -38,6 +38,14 @@ require_once("../../controladores/controlador_usuario/validar_sesion.php");
                 <input type="text" id="usuario" name="Usuario" required>
                 <label for="password">Contraseña:</label>
                 <input type="password" id="password" name="Password" required>
+                
+                <label for="rol">Rol:</label>
+                <select id="rol" name="Rol" required>
+                    <option value="">Seleccione un rol</option>
+                    <option value="Administrador">Administrador</option>
+                    <option value="Mesero">Mesero</option>
+                </select>
+                
                 <input type="submit" value="Registrar">
             </form>
             <!-- Botón para volver -->
