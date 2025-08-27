@@ -38,7 +38,6 @@ $ventas = $conn->query("SELECT * FROM vista_ventas_detalladas ORDER BY PedidoID 
             <thead>
                 <tr>
                     <th>Pedido</th>
-                    <th>Cliente</th>
                     <th>Tipo</th>
                     <th>Ubicación</th>
                     <th>Teléfono</th>
@@ -53,7 +52,6 @@ $ventas = $conn->query("SELECT * FROM vista_ventas_detalladas ORDER BY PedidoID 
                 <?php while ($venta = $ventas->fetch(PDO::FETCH_ASSOC)): ?>
                     <tr>
                         <td><?= $venta['PedidoID'] ?></td>
-                        <td><?= htmlspecialchars($venta['Cliente']) ?></td>
                         <td><?= htmlspecialchars($venta['TipoPedido']) ?></td>
                         <td><?= htmlspecialchars($venta['Ubicacion']) ?></td>
                         <td><?= htmlspecialchars($venta['Telefono'] ?: '-') ?></td>

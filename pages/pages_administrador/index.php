@@ -107,12 +107,7 @@ $valoresPlatos = array_column($platosVendidosHoy, 'total_vendidos');
     </div>
 </div>
 
-<div class="container mt-4">
-    <div class="btn-registrarAdministrador">
-        <a href="add.php" class="btn-registro">Lista y Registro de Usuarios</a>
-        <a href="pages_reportes.php" class="btn-registro"> Reporte de Ventas</a>
-    </div>
-</div>
+<br><br>    <br>
 
 
 

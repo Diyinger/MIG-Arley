@@ -1,5 +1,4 @@
 <?php
-
 $titulo = "Lista de Pedidos";
 
 include __DIR__ . '/../../pages/pages_layout/menu_admin.php';
@@ -24,10 +23,7 @@ $pedidos = $conn->query("SELECT * FROM pedidos ORDER BY PedidoID DESC");
     <!-- DataTables CSS con botones -->
     <link href="https://cdn.datatables.net/v/bs5/jszip-3.10.1/dt-2.3.1/b-3.2.3/b-html5-3.2.3/b-print-3.2.3/datatables.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="../../css/estilosIndexAdmin.css">
-
     <link rel="stylesheet" href="../../css/estilos.css">
-    <link rel="stylesheet" href="../../css/estilosIndexAdmin.css">
-
     <link rel="stylesheet" href="../../css/listar_pedidos.css">
 </head>
 
@@ -38,7 +34,6 @@ $pedidos = $conn->query("SELECT * FROM pedidos ORDER BY PedidoID DESC");
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Cliente</th>
                     <th>Tipo</th>
                     <th>Mesa/Dirección</th>
                     <th>Teléfono</th>
@@ -50,7 +45,6 @@ $pedidos = $conn->query("SELECT * FROM pedidos ORDER BY PedidoID DESC");
                 <?php while ($pedido = $pedidos->fetch(PDO::FETCH_ASSOC)): ?>
                     <tr>
                         <td><?= $pedido['PedidoID'] ?></td>
-                        <td><?= htmlspecialchars($pedido['Cliente']) ?></td>
                         <td>
                             <span class="badge <?= $pedido['tipo_pedido'] === 'mesa' ? 'bg-primary' : 'bg-success' ?>">
                                 <?= ucfirst($pedido['tipo_pedido']) ?>
@@ -91,7 +85,6 @@ $pedidos = $conn->query("SELECT * FROM pedidos ORDER BY PedidoID DESC");
     <script>
       $(document).ready(function() {
         $('#tablaPedidos').DataTable({
-          
           language: {
             url: '//cdn.datatables.net/plug-ins/1.13.7/i18n/es-ES.json'
           }

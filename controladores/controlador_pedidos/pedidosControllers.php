@@ -40,14 +40,13 @@ switch ($accion) {
 
     case 'actualizar':
         $pedidoId = $_POST['pedido_id'];
-        $cliente = $_POST['cliente'];
         $mesa = $_POST['mesa'];
         $platos = $_POST['platos'] ?? [];
         $cantidades = $_POST['cantidades'] ?? [];
 
-        // Actualizar datos del pedido
-        $stmt = $conn->prepare("UPDATE pedidos SET Cliente = ?, Mesa = ? WHERE PedidoID = ?");
-        $stmt->execute([$cliente, $mesa, $pedidoId]);
+        // Actualizar datos del pedido (sin Cliente)
+        $stmt = $conn->prepare("UPDATE pedidos SET Mesa = ? WHERE PedidoID = ?");
+        $stmt->execute([$mesa, $pedidoId]);
 
         // Eliminar platos actuales
         $stmt = $conn->prepare("DELETE FROM platos_pedido WHERE PedidoID = ?");
@@ -60,12 +59,10 @@ switch ($accion) {
             $stmt->execute([$pedidoId, $platoId, $cantidad]);
         }
 
-    
         header("Location: ../../pages/pages_pedidos/ticket.php?id=" . $pedidoId);
         exit;
 
     case 'guardar':
-        $cliente = $_POST['cliente'];
         $tipo_pedido = $_POST['tipo_pedido'] ?? 'mesa';
         $mesa = ($tipo_pedido == 'mesa') ? $_POST['mesa'] : null;
         $direccion = ($tipo_pedido == 'domicilio') ? $_POST['direccion'] : null;
@@ -90,7 +87,6 @@ switch ($accion) {
             
             // Luego, verificar el stock para cada plato
             foreach ($cantidadesTotales as $platoId => $cantidadTotal) {
-                // Obtener stock actual y nombre del plato
                 $stmt = $conn->prepare("SELECT cantidad, Nombre FROM platos WHERE PlatoID = ?");
                 $stmt->execute([$platoId]);
                 $plato = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -102,9 +98,9 @@ switch ($accion) {
                 }
             }
 
-            // Insertar pedido
-            $stmt = $conn->prepare("INSERT INTO pedidos (Cliente, Mesa, tipo_pedido, direccion, telefono, FechaHora) VALUES (?, ?, ?, ?, ?, NOW())");
-            $stmt->execute([$cliente, $mesa, $tipo_pedido, $direccion, $telefono]);
+            // Insertar pedido (sin Cliente)
+            $stmt = $conn->prepare("INSERT INTO pedidos (Mesa, tipo_pedido, direccion, telefono, FechaHora) VALUES (?, ?, ?, ?, NOW())");
+            $stmt->execute([$mesa, $tipo_pedido, $direccion, $telefono]);
             $pedidoId = $conn->lastInsertId();
 
             // Insertar cada plato y actualizar stock
@@ -136,9 +132,6 @@ switch ($accion) {
             exit;
         }
 
-        header("Location: ../../pages/pages_pedidos/ticket.php?id=" . $pedidoId);
-        exit;
-
     case 'eliminar':
         $pedidoId = $_GET['id'];
 
@@ -147,12 +140,10 @@ switch ($accion) {
         $stmt = $conn->prepare("DELETE FROM pedidos WHERE PedidoID = ?");
         $stmt->execute([$pedidoId]);
 
-
         header("Location: ../../pages/pages_pedidos/listar_pedidos.php");
         exit;
 
     default:
-        
         include __DIR__ . '/../../pages/pages_pedidos/listar_pedidos.php';
         break;
 }

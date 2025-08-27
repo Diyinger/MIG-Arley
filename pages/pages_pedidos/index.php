@@ -18,10 +18,6 @@ $conn = Conexion::getInstancia()->getConexion();
 
     <div class="row mb-3">
         <div class="col-md-4">
-            <label class="form-label">Nombre del Cliente</label>
-            <input type="text" name="cliente" class="form-control" required>
-        </div>
-        <div class="col-md-4">
             <label class="form-label">Tipo de Pedido</label>
             <select name="tipo_pedido" class="form-control" id="tipoPedido" required>
                 <option value="">Seleccione el tipo de pedido</option>

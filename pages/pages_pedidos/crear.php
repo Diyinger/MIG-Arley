@@ -1,5 +1,4 @@
 <?php
-
 $titulo = "Nuevo Producto"; 
 include __DIR__ . '/../pages_layout/head.php'; 
 require_once __DIR__ . '/../../controllers/dashboard.php';
@@ -53,11 +52,26 @@ $platos = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <?php endif; ?>
 
         <form id="pedidoForm" method="POST" action="../../controladores/controlador_pedidos/pedidosControllers.php?accion=guardar" onsubmit="validarPedido(event);">
-            <label>Cliente:</label>
-            <input type="text" name="cliente" required><br>
             
-            <label>Mesa:</label>
-            <input type="number" name="mesa" required><br>
+            <label>Tipo de Pedido:</label>
+            <select name="tipo_pedido" id="tipoPedido" required onchange="mostrarCamposTipo()">
+                <option value="">Seleccione el tipo</option>
+                <option value="mesa">Mesa</option>
+                <option value="domicilio">Domicilio</option>
+            </select><br>
+            
+            <div id="mesaDiv" style="display: none;">
+                <label>Mesa:</label>
+                <input type="number" name="mesa" id="mesaInput"><br>
+            </div>
+            
+            <div id="domicilioDiv" style="display: none;">
+                <label>Dirección:</label>
+                <input type="text" name="direccion" id="direccionInput"><br>
+                
+                <label>Teléfono:</label>
+                <input type="tel" name="telefono" id="telefonoInput"><br>
+            </div>
             
             <div id="platos-container">
                 <h3>Platos</h3>
@@ -84,8 +98,64 @@ $platos = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
 
     <script>
+    function mostrarCamposTipo() {
+        const tipo = document.getElementById('tipoPedido').value;
+        const mesaDiv = document.getElementById('mesaDiv');
+        const domicilioDiv = document.getElementById('domicilioDiv');
+        const mesaInput = document.getElementById('mesaInput');
+        const direccionInput = document.getElementById('direccionInput');
+        const telefonoInput = document.getElementById('telefonoInput');
+        
+        if (tipo === 'mesa') {
+            mesaDiv.style.display = 'block';
+            domicilioDiv.style.display = 'none';
+            mesaInput.required = true;
+            direccionInput.required = false;
+            telefonoInput.required = false;
+        } else if (tipo === 'domicilio') {
+            mesaDiv.style.display = 'none';
+            domicilioDiv.style.display = 'block';
+            mesaInput.required = false;
+            direccionInput.required = true;
+            telefonoInput.required = true;
+        } else {
+            mesaDiv.style.display = 'none';
+            domicilioDiv.style.display = 'none';
+            mesaInput.required = false;
+            direccionInput.required = false;
+            telefonoInput.required = false;
+        }
+    }
+
     function validarPedido(event) {
         event.preventDefault(); // Prevenir el envío del formulario por defecto
+        
+        // Validar tipo de pedido
+        const tipoPedido = document.getElementById('tipoPedido').value;
+        if (!tipoPedido) {
+            alert('Por favor seleccione el tipo de pedido');
+            return false;
+        }
+        
+        // Validar campos según el tipo de pedido
+        if (tipoPedido === 'mesa') {
+            const mesa = document.getElementById('mesaInput').value;
+            if (!mesa) {
+                alert('Por favor ingrese el número de mesa');
+                return false;
+            }
+        } else if (tipoPedido === 'domicilio') {
+            const direccion = document.getElementById('direccionInput').value;
+            const telefono = document.getElementById('telefonoInput').value;
+            if (!direccion) {
+                alert('Por favor ingrese la dirección de entrega');
+                return false;
+            }
+            if (!telefono) {
+                alert('Por favor ingrese el teléfono de contacto');
+                return false;
+            }
+        }
         
         const platos = document.querySelectorAll('.plato-select');
         const platosContados = new Map(); // Para contar la cantidad total por plato

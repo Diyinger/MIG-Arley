@@ -38,8 +38,18 @@ $platos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <link rel="stylesheet" href="../../css/estilosIndexAdmin.css">
 <div class="container mt-5 ticket-container">
     <h2 class="mb-4">Ticket del Pedido</h2>
-    <p><strong>Cliente:</strong> <?= htmlspecialchars($pedido['Cliente']) ?></p>
-    <p><strong>Mesa:</strong> <?= htmlspecialchars($pedido['Mesa']) ?></p>
+    
+    <!-- Información del tipo de pedido -->
+    <p><strong>Tipo de pedido:</strong> 
+        <?= $pedido['tipo_pedido'] == 'mesa' ? 'Mesa ' . htmlspecialchars($pedido['Mesa']) : 'Domicilio' ?>
+    </p>
+    
+    <!-- Mostrar información de domicilio si aplica -->
+    <?php if ($pedido['tipo_pedido'] == 'domicilio'): ?>
+        <p><strong>Dirección:</strong> <?= htmlspecialchars($pedido['direccion']) ?></p>
+        <p><strong>Teléfono:</strong> <?= htmlspecialchars($pedido['telefono']) ?></p>
+    <?php endif; ?>
+    
     <p><strong>Fecha y hora:</strong> <?= $pedido['FechaHora'] ?></p>
 
     <table class="table table-bordered mt-4">
