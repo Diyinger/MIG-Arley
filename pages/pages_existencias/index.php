@@ -1,5 +1,6 @@
 <?php
 require_once("../../controladores/controlador_usuario/validar_sesion.php");
+require_once("../../controladores/controlador_usuario/validar_permisos.php");
 require_once '../../controladores/controlador_existencias/InventarioController.php';
 require_once '../../modelos/modelo_existencias/InventarioModel.php';
 include '../../pages/pages_layout/menu_admin.php';
@@ -54,6 +55,7 @@ $movimientos = $modelo->obtenerMovimientos();
                             <th>ID</th>
                             <th>Producto</th>
                             <th>Stock</th>
+                            <th>Unidad</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -63,6 +65,7 @@ $movimientos = $modelo->obtenerMovimientos();
                                 <td><?= $p['id'] ?></td>
                                 <td><?= $p['nombre'] ?></td>
                                 <td><?= $p['stock'] ?></td>
+                                <td><?= $p['unidad_medida'] ? "{$p['stock']} {$p['abreviatura']}" : "N/A" ?></td>
                                 <td class="text-center">
                                     <form method="POST" action="../../controladores/controlador_existencias/InventarioController.php" onsubmit="return confirm('¿Seguro que desea eliminar este producto?');" style="display:inline;">
                                         <input type="hidden" name="eliminar_producto" value="1">

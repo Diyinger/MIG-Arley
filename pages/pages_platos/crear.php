@@ -5,308 +5,240 @@ require_once '../../modelos/modelo_existencias/InventarioModel.php';
 // Obtener los productos disponibles
 $modeloInventario = new InventarioModel();
 $productos = $modeloInventario->obtenerInventario();
-
-// Debug temporal
-if (empty($productos)) {
-    echo '<div class="alert alert-warning">No hay productos disponibles en el inventario.</div>';
-} else {
-    echo '<div style="display:none;">Debug: ' . print_r($productos, true) . '</div>';
-}
 ?>
 
-<link rel="stylesheet" href="../../css/estilosIndexAdmin.css">
-<style>
-    .ingrediente-item {
-        border: 1px solid #ddd;
-        padding: 15px;
-        margin-bottom: 10px;
-        border-radius: 5px;
-        background-color: #f8f9fa;
-    }
-    .stock-info {
-        font-size: 0.9em;
-        margin-top: 5px;
-    }
-    .stock-warning {
-        color: #dc3545;
-    }
-    .stock-ok {
-        color: #198754;
-    }
-</style>
+<div class="container mt-4">
+    <h3>Crear plato</h3>
 
-<div class="container mt-5">
-    <h2>Agregar Plato</h2>
-
-    <?php if (isset($_SESSION['error'])): ?>
-        <div class="alert alert-danger">
-            <?php 
-            echo $_SESSION['error'];
-            unset($_SESSION['error']);
-            ?>
-        </div>
-    <?php endif; ?>
-
-    <form id="formCrearPlato" method="POST" action="../../controladores/controlador_plato/PlatoController.php?accion=guardar" onsubmit="return validarFormulario()">
-        <div class="mb-3">
-            <label>Nombre del Plato</label>
+    <form action="../../controladores/controlador_plato/PlatoController.php?accion=guardar" method="post" id="form-plato">
+        <div class="form-group">
+            <label>Nombre del plato</label>
             <input type="text" name="nombre" class="form-control" required>
         </div>
-        <div class="mb-3">
+
+        <div class="form-group">
             <label>Descripción</label>
             <textarea name="descripcion" class="form-control"></textarea>
         </div>
-        <div class="mb-3">
+
+        <div class="form-group">
             <label>Precio</label>
-            <input type="number" name="precio" class="form-control" required min="0" step="0.01">
+            <input type="number" name="precio" class="form-control" step="0.01" required>
         </div>
 
-        <div class="mb-3">
-            <label>Cantidad inicial de platos</label>
-            <input type="number" name="cantidad_platos" class="form-control" required min="0" value="0">
-            <small class="text-muted">Cantidad inicial de platos que desea preparar. Esta cantidad afectará el stock de ingredientes.</small>
+        <div class="form-group">
+            <label>Cantidad inicial de platos (para validar stock)</label>
+            <input type="number" name="cantidad_platos" class="form-control" value="1" min="1" step="1" required>
         </div>
 
-        <div class="mb-4">
-            <h4>Ingredientes</h4>
-            <p class="text-muted">Seleccione los productos y cantidades necesarias para un plato individual</p>
-            
-            <div id="ingredientes">
-                <div class="ingrediente-item">
-                    <div class="row">
-                        <div class="col-md-5">
-                            <label>Producto</label>
-                            <select name="productos[]" class="form-control producto-select" required>
-                                <option value="">Seleccione un producto</option>
-                                <?php foreach($productos as $producto): ?>
-                                    <option value="<?php echo $producto['id']; ?>" 
-                                            data-stock="<?php echo $producto['stock']; ?>">
-                                        <?php echo $producto['nombre']; ?> 
-                                        (Stock: <?php echo $producto['stock']; ?> unidades)
-                                    </option>
-                                <?php endforeach; ?>
-                            </select>
-                            <div class="stock-info"></div>
-                        </div>
-                        <div class="col-md-3">
-                            <label>Cantidad necesaria</label>
-                            <input type="number" name="cantidades[]" class="form-control cantidad-input" 
-                                   required min="0.01" step="0.01" placeholder="Cantidad">
-                        </div>
-                        <div class="col-md-3">
-                            <label>Unidad de medida</label>
-                            <select name="unidades[]" class="form-control unidad-select">
-                                <option value="kg">Kilogramos</option>
-                                <option value="g">Gramos</option>
-                                <option value="l">Litros</option>
-                                <option value="ml">Mililitros</option>
-                                <option value="unidad">Unidades</option>
-                            </select>
-                        </div>
-                        <div class="col-md-1">
-                            <label>&nbsp;</label>
-                            <button type="button" class="btn btn-danger btn-sm form-control eliminar-ingrediente">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
+        <hr>
+        <h4>Ingredientes</h4>
+        <p class="text-muted">Seleccione los productos y cantidades necesarias para un plato individual</p>
+
+        <div id="ingredientes">
+            <div class="ingrediente-item">
+                <div class="row align-items-end">
+                    <div class="col-md-5">
+                        <label>Producto</label>
+                        <select name="productos[]" class="form-control producto-select" required>
+                            <option value="">Seleccione un producto</option>
+                            <?php foreach($productos as $producto): 
+                                // intentar detectar unidad base si no existe unidad_base
+                                $unidad_base = $producto['unidad_base'] ?? null;
+                                if (!$unidad_base) {
+                                    $desc = strtolower($producto['descripcion'] ?? '');
+                                    if (strpos($desc, 'libra') !== false || strpos($desc, 'lb') !== false) $unidad_base = 'lb';
+                                    elseif (strpos($desc, 'kilo') !== false || strpos($desc, 'kg') !== false) $unidad_base = 'kg';
+                                    elseif (strpos($desc, 'litro') !== false || strpos($desc, 'l') !== false) $unidad_base = 'l';
+                                    else $unidad_base = 'unidad';
+                                }
+                            ?>
+                                <option value="<?php echo $producto['id']; ?>" 
+                                        data-stock="<?php echo $producto['stock']; ?>"
+                                        data-unidad="<?php echo $unidad_base; ?>">
+                                    <?php echo htmlspecialchars($producto['nombre']); ?> 
+                                    (Stock: <?php echo $producto['stock']; ?> <?php echo $unidad_base; ?>)
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                        <div class="stock-info small text-muted mt-1"></div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label>Cantidad necesaria</label>
+                        <input type="number" name="cantidades[]" class="form-control cantidad-input" required min="0.001" step="0.001" placeholder="Cantidad por plato">
+                    </div>
+
+                    <div class="col-md-3">
+                        <label>Unidad de medida</label>
+                        <select name="unidades[]" class="form-control unidad-select">
+                            <option value="kg">Kilogramos (kg)</option>
+                            <option value="g">Gramos (g)</option>
+                            <option value="lb">Libras (lb)</option>
+                            <option value="oz">Onzas (oz)</option>
+                            <option value="l">Litros (l)</option>
+                            <option value="ml">Mililitros (ml)</option>
+                            <option value="unidad">Unidades</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-1 text-center">
+                        <button type="button" class="btn btn-danger btn-sm eliminar-ingrediente">
+                            <i class="fas fa-trash"></i>
+                        </button>
                     </div>
                 </div>
-            </div>
 
-            <button type="button" class="btn btn-info mt-2" onclick="agregarIngrediente()">
-                <i class="fas fa-plus"></i> Agregar otro ingrediente
-            </button>
+                <hr>
+            </div>
         </div>
 
+        <button type="button" class="btn btn-info mt-2" id="btn-agregar">
+            <i class="fas fa-plus"></i> Agregar otro ingrediente
+        </button>
+
         <div class="mt-4">
-            <button type="submit" class="btn btn-success">
-                <i class="fas fa-save"></i> Guardar Plato
-            </button>
-            <a href="../../controladores/controlador_plato/PlatoController.php?accion=index" class="btn btn-secondary">
-                <i class="fas fa-times"></i> Cancelar
-            </a>
+            <button type="submit" class="btn btn-success">Guardar plato</button>
+            <a href="../../controladores/controlador_plato/PlatoController.php?accion=index" class="btn btn-secondary">Cancelar</a>
         </div>
     </form>
 </div>
 
 <script>
-function agregarIngrediente() {
-    const div = document.createElement('div');
-    div.className = 'ingrediente-item';
-    div.innerHTML = document.querySelector('.ingrediente-item').innerHTML;
-    document.getElementById('ingredientes').appendChild(div);
+(function(){
+    // util: factores para conversión (a gramos / mililitros)
+    const massFactors = { g: 1, kg: 1000, lb: 453.59237, oz: 28.349523125 };
+    const volFactors  = { ml: 1, l: 1000 };
 
-    // Limpiar valores
-    div.querySelector('select[name="productos[]"]').value = '';
-    div.querySelector('input[name="cantidades[]"]').value = '';
-    div.querySelector('.stock-info').textContent = '';
+    function unitCategory(u) {
+        if (!u) return null;
+        u = u.toLowerCase();
+        if (['g','kg','lb','oz'].includes(u)) return 'mass';
+        if (['ml','l'].includes(u)) return 'volume';
+        if (u === 'unidad') return 'unidad';
+        return null;
+    }
 
-    // Agregar eventos
-    agregarEventosIngrediente(div);
-}
-
-function agregarEventosIngrediente(elemento) {
-    const productoSelect = elemento.querySelector('.producto-select');
-    const cantidadInput = elemento.querySelector('.cantidad-input');
-    const stockInfo = elemento.querySelector('.stock-info');
-    const unidadSelect = elemento.querySelector('.unidad-select');
-    
-    // Eliminar ingrediente
-    elemento.querySelector('.eliminar-ingrediente').addEventListener('click', function() {
-        if (document.querySelectorAll('.ingrediente-item').length > 1) {
-            elemento.remove();
+    function convert(value, fromUnit, toUnit) {
+        if (fromUnit === toUnit) return parseFloat(value) || 0;
+        const fromCat = unitCategory(fromUnit);
+        const toCat   = unitCategory(toUnit);
+        if (!fromCat || !toCat || fromCat !== toCat) return null; // incompatible
+        if (fromCat === 'mass') {
+            const grams = parseFloat(value) * (massFactors[fromUnit] || 1);
+            return grams / (massFactors[toUnit] || 1);
+        } else if (fromCat === 'volume') {
+            const ml = parseFloat(value) * (volFactors[fromUnit] || 1);
+            return ml / (volFactors[toUnit] || 1);
         } else {
-            alert('Debe mantener al menos un ingrediente');
+            // unidad
+            return parseFloat(value) || 0;
         }
-    });
+    }
 
-    // Actualizar información de stock al cambiar producto
-    productoSelect.addEventListener('change', function() {
-        const option = this.options[this.selectedIndex];
-        if (this.value) {
-            const stock = option.dataset.stock;
-            
-            stockInfo.innerHTML = `Stock disponible: <span class="${parseFloat(stock) > 0 ? 'stock-ok' : 'stock-warning'}">${stock} unidades</span>`;
-            cantidadInput.max = stock;
-            unidadSelect.value = 'unidad'; // Por defecto usamos unidades
-            
-            if (parseFloat(stock) <= 0) {
-                stockInfo.innerHTML += '<br><span class="stock-warning">¡No hay suficiente stock!</span>';
-            }
-        } else {
+    // agrega un nuevo bloque de ingrediente clonando el primero
+    function agregarIngrediente() {
+        const template = document.querySelector('#ingredientes .ingrediente-item');
+        const clone = template.cloneNode(true);
+        // limpiar valores
+        clone.querySelector('.producto-select').value = '';
+        clone.querySelector('.cantidad-input').value = '';
+        clone.querySelector('.unidad-select').value = 'kg';
+        clone.querySelector('.stock-info').textContent = '';
+        // agregar eventos
+        agregarEventosIngrediente(clone);
+        document.getElementById('ingredientes').appendChild(clone);
+    }
+
+    function eliminarIngrediente(btn) {
+        const items = document.querySelectorAll('#ingredientes .ingrediente-item');
+        if (items.length <= 1) {
+            alert('Debe mantener al menos un ingrediente');
+            return;
+        }
+        btn.closest('.ingrediente-item').remove();
+        actualizarValidacionesStock();
+    }
+
+    function agregarEventosIngrediente(elemento) {
+        const productoSelect = elemento.querySelector('.producto-select');
+        const cantidadInput = elemento.querySelector('.cantidad-input');
+        const unidadSelect = elemento.querySelector('.unidad-select');
+        const stockInfo = elemento.querySelector('.stock-info');
+        const btnEliminar = elemento.querySelector('.eliminar-ingrediente');
+
+        productoSelect.addEventListener('change', function(){
             stockInfo.textContent = '';
-            cantidadInput.removeAttribute('max');
-        }
-    });
+            actualizarValidacionesStock();
+        });
 
-    // Validar cantidad contra stock disponible
-    cantidadInput.addEventListener('input', function() {
-        const stock = parseFloat(productoSelect.options[productoSelect.selectedIndex].dataset.stock);
-        const cantidad = parseFloat(this.value);
-        
-        if (cantidad > stock) {
-            this.value = stock;
-            alert('La cantidad no puede superar el stock disponible');
-        }
-    });
-}
-
-function validarFormulario() {
-    const ingredientes = document.querySelectorAll('.ingrediente-item');
-    const cantidadPlatos = parseFloat(document.querySelector('input[name="cantidad_platos"]').value);
-    let valido = true;
-    let mensaje = '';
-
-    // Verificar que la cantidad de platos sea válida
-    if (!cantidadPlatos || cantidadPlatos <= 0) {
-        mensaje = 'Debe especificar una cantidad válida de platos a preparar.';
-        alert(mensaje);
-        return false;
+        cantidadInput.addEventListener('input', actualizarValidacionesStock);
+        unidadSelect.addEventListener('change', actualizarValidacionesStock);
+        btnEliminar.addEventListener('click', function(){ eliminarIngrediente(this); });
     }
 
-    // Verificar que haya al menos un ingrediente
-    if (ingredientes.length === 0) {
-        mensaje = 'Debe agregar al menos un ingrediente al plato.';
-        alert(mensaje);
-        return false;
-    }
+    function actualizarValidacionesStock() {
+        const cantidadPlatos = parseFloat(document.querySelector('input[name="cantidad_platos"]').value) || 0;
+        document.querySelectorAll('#ingredientes .ingrediente-item').forEach((ingrediente) => {
+            const productoSelect = ingrediente.querySelector('.producto-select');
+            const cantidadInput = ingrediente.querySelector('.cantidad-input');
+            const unidadSelect = ingrediente.querySelector('.unidad-select');
+            const stockInfo = ingrediente.querySelector('.stock-info');
 
-    // Verificar cada ingrediente
-    ingredientes.forEach((ingrediente, index) => {
-        const productoSelect = ingrediente.querySelector('.producto-select');
-        const cantidadInput = ingrediente.querySelector('.cantidad-input');
-        const producto = productoSelect.value;
-        const cantidad = parseFloat(cantidadInput.value);
-        const stock = parseFloat(productoSelect.options[productoSelect.selectedIndex]?.dataset.stock || 0);
-        const cantidadTotalNecesaria = cantidad * cantidadPlatos;
-
-        if (!producto) {
-            mensaje = `El ingrediente #${index + 1} debe tener un producto seleccionado.`;
-            valido = false;
-        }
-        if (!cantidad || cantidad <= 0) {
-            mensaje = `El ingrediente #${index + 1} debe tener una cantidad válida.`;
-            valido = false;
-        }
-        if (cantidadTotalNecesaria > stock) {
-            mensaje = `No hay suficiente stock para el ingrediente #${index + 1}.
-` +
-                     `Stock disponible: ${stock}
-` +
-                     `Cantidad necesaria total: ${cantidadTotalNecesaria} (${cantidad} por plato × ${cantidadPlatos} platos)`;
-            valido = false;
-        }
-    });
-
-    if (!valido) {
-        alert(mensaje);
-    }
-    return valido;
-}
-
-function actualizarValidacionesStock() {
-    const cantidadPlatos = parseFloat(document.querySelector('input[name="cantidad_platos"]').value) || 0;
-    
-    document.querySelectorAll('.ingrediente-item').forEach((ingrediente, index) => {
-        const productoSelect = ingrediente.querySelector('.producto-select');
-        const cantidadInput = ingrediente.querySelector('.cantidad-input');
-        const stockInfo = ingrediente.querySelector('.stock-info');
-        
-        const stock = parseFloat(productoSelect.options[productoSelect.selectedIndex]?.dataset.stock || 0);
-        const cantidadPorPlato = parseFloat(cantidadInput.value) || 0;
-        const cantidadTotalNecesaria = cantidadPorPlato * cantidadPlatos;
-        
-        if (productoSelect.value) {
-            let mensaje = `Stock disponible: ${stock} unidades<br>`;
-            mensaje += `Necesario total: ${cantidadTotalNecesaria} unidades `;
-            mensaje += `(${cantidadPorPlato} × ${cantidadPlatos} platos)`;
-            
-            if (cantidadTotalNecesaria > stock) {
-                mensaje += '<br><span class="stock-warning">¡Stock insuficiente!</span>';
-                stockInfo.classList.add('stock-warning');
-            } else {
-                stockInfo.classList.remove('stock-warning');
+            if (!productoSelect.value) {
+                stockInfo.innerHTML = '';
+                return;
             }
-            
-            stockInfo.innerHTML = mensaje;
-        }
+
+            const option = productoSelect.options[productoSelect.selectedIndex];
+            const stock = parseFloat(option.dataset.stock) || 0;
+            const productoUnidad = option.dataset.unidad || 'unidad';
+
+            const cantidadPorPlato = parseFloat(cantidadInput.value) || 0;
+            const necesarioTotal = cantidadPorPlato * (cantidadPlatos || 1);
+
+            // Convertir necesarioTotal desde unidadSeleccionada a unidad del producto
+            const convertido = convert(necesarioTotal, unidadSelect.value, productoUnidad);
+
+            let mensaje = `Stock disponible: ${stock} ${productoUnidad}<br>`;
+            mensaje += `Necesario total: ${necesarioTotal} ${unidadSelect.value} (por ${cantidadPlatos} plato(s))`;
+
+            if (convertido === null) {
+                // unidades incompatibles
+                mensaje += `<br><span class="text-warning">Unidades incompatibles. No se puede comparar ${unidadSelect.value} con ${productoUnidad}.</span>`;
+                stockInfo.innerHTML = mensaje;
+                stockInfo.classList.add('text-warning');
+            } else {
+                // redondeo razonable para mostrar
+                const convertidoShow = Math.round(convertido * 1000) / 1000;
+                mensaje += `<br>Necesario convertido: ${convertidoShow} ${productoUnidad}`;
+                if (convertido > stock) {
+                    mensaje += `<br><span class="text-danger">¡Stock insuficiente!</span>`;
+                    stockInfo.classList.remove('text-success');
+                    stockInfo.classList.add('text-danger');
+                } else {
+                    mensaje += `<br><span class="text-success">Stock suficiente</span>`;
+                    stockInfo.classList.remove('text-danger');
+                    stockInfo.classList.add('text-success');
+                }
+                stockInfo.innerHTML = mensaje;
+            }
+        });
+    }
+
+    // init
+    document.getElementById('btn-agregar').addEventListener('click', agregarIngrediente);
+    document.querySelector('input[name="cantidad_platos"]').addEventListener('input', actualizarValidacionesStock);
+    // agregar eventos para el primer ingrediente y los que ya existan
+    document.querySelectorAll('#ingredientes .ingrediente-item').forEach(agregarEventosIngrediente);
+
+    // por si se hace submit: se puede hacer validación final aquí
+    document.getElementById('form-plato').addEventListener('submit', function(e){
+        // validación extra si quieres (por ejemplo evitar guardar si stock insuficiente)
+        // la validación de stock crítica se hace en el servidor también.
     });
-}
 
-function agregarEventosIngrediente(elemento) {
-    const productoSelect = elemento.querySelector('.producto-select');
-    const cantidadInput = elemento.querySelector('.cantidad-input');
-    const stockInfo = elemento.querySelector('.stock-info');
-    const unidadSelect = elemento.querySelector('.unidad-select');
-    
-    // Eliminar ingrediente
-    elemento.querySelector('.eliminar-ingrediente').addEventListener('click', function() {
-        if (document.querySelectorAll('.ingrediente-item').length > 1) {
-            elemento.remove();
-        } else {
-            alert('Debe mantener al menos un ingrediente');
-        }
-    });
-
-    // Actualizar información de stock
-    productoSelect.addEventListener('change', function() {
-        actualizarValidacionesStock();
-    });
-
-    // Validar cantidad
-    cantidadInput.addEventListener('input', function() {
-        actualizarValidacionesStock();
-    });
-}
-
-// Agregar eventos para actualización en tiempo real
-document.querySelector('input[name="cantidad_platos"]').addEventListener('input', actualizarValidacionesStock);
-
-// Agregar eventos a los ingredientes iniciales
-document.querySelectorAll('.ingrediente-item').forEach(agregarEventosIngrediente);
-
-// Inicializar eventos para los ingredientes existentes
-document.querySelectorAll('.ingrediente-item').forEach(agregarEventosIngrediente);
+})();
 </script>
 
 <?php include __DIR__ . '/../pages_layout/footer.php'; ?>

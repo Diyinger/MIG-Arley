@@ -20,6 +20,7 @@ class Administradores {
                 $_SESSION["ID"] = $usuario_db["ID_USUARIO"];
                 $_SESSION["NOMBRE"] = $usuario_db["NOMBRE"];
                 $_SESSION["PERFIL"] = $usuario_db["PERFIL"];
+                $_SESSION["ROL"] = $usuario_db["ROL"];
                 return true;
             }
             return false;

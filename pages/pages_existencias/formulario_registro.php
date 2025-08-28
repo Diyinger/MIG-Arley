@@ -1,4 +1,8 @@
 
+<?php
+require_once '../../modelos/modelo_existencias/InventarioModel.php';
+$modelo = new InventarioModel();
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -29,6 +33,18 @@
     <div class="mb-3">
         <label>Stock:</label>
         <input type="number" name="stock" class="form-control" min="0" required>
+    </div>
+    <div class="mb-3">
+        <label>Unidad de Medida:</label>
+        <select name="unidad_medida_id" class="form-control" required>
+            <option value="">Seleccione una unidad</option>
+            <?php
+            $unidades = $modelo->obtenerUnidadesMedida();
+            foreach ($unidades as $unidad) {
+                echo "<option value='{$unidad['id']}'>{$unidad['nombre']} ({$unidad['abreviatura']})</option>";
+            }
+            ?>
+        </select>
     </div>
     <button type="submit" class="btn-success">Registrar</button>
 </form>

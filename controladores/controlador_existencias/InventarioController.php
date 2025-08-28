@@ -7,9 +7,10 @@ if (isset($_POST['registrar_producto'])) {
         $nombre = $_POST['nombre'];
         $descripcion = $_POST['descripcion'];
         $stock = $_POST['stock'];
+        $unidad_medida_id = $_POST['unidad_medida_id'];
 
         $modelo = new InventarioModel();
-        $modelo->registrarProducto($codigo, $nombre, $descripcion, $stock);
+        $modelo->registrarProducto($codigo, $nombre, $descripcion, $stock, $unidad_medida_id);
         
         header("Location: ../../pages/pages_existencias/index.php?mensaje=producto_registrado");
         exit;
